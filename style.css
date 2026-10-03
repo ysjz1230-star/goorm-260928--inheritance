@@ -1,0 +1,159 @@
+/* ============ 1. 디자인 토큰 (색·간격은 여기서만 바꾸면 전체에 적용) ============ */
+:root {
+  --bg: #000;
+  --bg-alt: #0a0a0b;
+  --surface: #0f0f11;
+  --border: #1f1f23;
+  --text: #f4f4f5;
+  --muted: #a1a1aa;
+  --accent: #00a3ff;
+  --accent-ink: #001826;
+  --ok: #34d399;
+  --warn: #fbbf24;
+  --radius: 14px;
+  --font: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+:root[data-theme="light"] {
+  --bg: #fff;
+  --bg-alt: #f6f7f9;
+  --surface: #fff;
+  --border: #e4e4e7;
+  --text: #09090b;
+  --muted: #52525b;
+  --accent: #0077c8;
+  --accent-ink: #fff;
+  --ok: #059669;
+  --warn: #b45309;
+}
+
+/* ============ 2. 기본 ============ */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); line-height: 1.65; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { line-height: 1.2; letter-spacing: -0.03em; margin: 0; }
+p { margin: 0; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.container { width: min(1120px, 100% - 32px); margin-inline: auto; }
+.container--narrow { width: min(720px, 100% - 32px); }
+.sr-only, .skip:not(:focus) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.skip:focus { position: fixed; top: 8px; left: 8px; z-index: 100; background: var(--accent); color: var(--accent-ink); padding: 8px 12px; border-radius: 8px; }
+.note { color: var(--muted); font-size: 13px; }
+
+/* ============ 3. 버튼·배지 ============ */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; border-radius: 999px; font: 600 15px var(--font); border: 1px solid transparent; cursor: pointer; transition: transform .15s, background .15s, border-color .15s; }
+.btn:active { transform: scale(.97); }
+.btn--primary { background: var(--text); color: var(--bg); }
+.btn--primary:hover { opacity: .88; }
+.btn--ghost { border-color: var(--border); color: var(--text); background: transparent; }
+.btn--ghost:hover { border-color: var(--muted); }
+.btn--sm { padding: 8px 14px; font-size: 14px; }
+.badge { display: inline-block; border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+.icon-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); background: transparent; color: var(--text); cursor: pointer; font-size: 16px; }
+
+/* ============ 4. 내비게이션 ============ */
+.nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px); background: color-mix(in srgb, var(--bg) 78%, transparent); border-bottom: 1px solid var(--border); }
+.nav__inner { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+.nav__links { display: none; gap: 28px; color: var(--muted); font-size: 14px; }
+.nav__links a:hover { color: var(--text); }
+.nav__actions { display: flex; align-items: center; gap: 10px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -0.02em; }
+.logo__mark { width: 18px; height: 18px; border-radius: 5px; background: linear-gradient(135deg, var(--accent), #7c5cff); }
+
+/* ============ 5. 히어로 ============ */
+.hero { padding: 72px 0 56px; text-align: center; background: radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%); }
+.hero h1 { font-size: clamp(36px, 8vw, 72px); font-weight: 700; }
+.grad { background: linear-gradient(90deg, var(--text), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lead { margin: 24px auto 0; max-width: 560px; color: var(--muted); font-size: clamp(16px, 2.4vw, 19px); }
+.hero__cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 32px 0 56px; }
+.hide-sm { display: none; }
+
+.mock { max-width: 860px; margin: 0 auto 12px; text-align: left; border: 1px solid var(--border); border-radius: 18px; background: var(--surface); overflow: hidden; box-shadow: 0 30px 80px -30px color-mix(in srgb, var(--accent) 40%, transparent); }
+.mock__bar { display: flex; align-items: center; gap: 6px; padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted); }
+.mock__bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+.mock__bar span { margin-left: 8px; }
+.mock__body { display: grid; gap: 20px; padding: 20px; }
+.mock__label { font-size: 13px; color: var(--muted); }
+.mock__big { font-size: 44px; font-weight: 700; letter-spacing: -0.04em; }
+.mock__list { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; font-size: 14px; color: var(--muted); }
+.mock__list li::before { content: "○"; margin-right: 8px; }
+.mock__list .done { color: var(--text); }
+.mock__list .done::before { content: "✓"; color: var(--ok); }
+.mock__list .doing::before { content: "◐"; color: var(--warn); }
+.code { margin: 0; padding: 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; font: 13px/1.9 var(--mono); overflow-x: auto; }
+.c-m { color: var(--muted); } .c-k { color: var(--accent); } .c-ok { color: var(--ok); } .c-w { color: var(--warn); }
+
+.progress { height: 8px; border-radius: 99px; background: var(--border); overflow: hidden; margin-top: 8px; }
+.progress__bar { height: 100%; background: linear-gradient(90deg, var(--accent), var(--ok)); border-radius: 99px; transition: width .35s ease; }
+
+/* ============ 6. 섹션 공통 ============ */
+.section { padding: 80px 0; }
+.section--alt { background: var(--bg-alt); border-block: 1px solid var(--border); }
+.eyebrow { color: var(--accent); font: 600 13px var(--mono); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
+.section h2 { font-size: clamp(28px, 5vw, 44px); }
+.sub { color: var(--muted); margin: 14px 0 40px; max-width: 620px; }
+
+/* 카드 그리드 */
+.grid { display: grid; gap: 16px; }
+.card { padding: 24px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); transition: border-color .2s, transform .2s; }
+.card:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--border)); transform: translateY(-2px); }
+.card__icon { display: inline-block; font: 600 12px var(--mono); color: var(--accent); border: 1px solid var(--border); border-radius: 8px; padding: 4px 8px; margin-bottom: 16px; }
+.card h3 { font-size: 20px; margin-bottom: 10px; }
+.card p { color: var(--muted); font-size: 15px; }
+
+/* ============ 7. 체크리스트 데모 ============ */
+.tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; }
+.tab { flex: none; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); background: transparent; color: var(--muted); font: 500 14px var(--font); cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+.demo__panel { border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); padding: 20px; }
+.demo__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.demo__count { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; }
+.checklist { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 8px; }
+.checklist label { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; transition: border-color .15s, background .15s; }
+.checklist label:hover { border-color: var(--muted); }
+.checklist input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--accent); flex: none; }
+.checklist small { display: block; color: var(--muted); font-size: 13px; }
+.checklist input:checked + span { color: var(--muted); text-decoration: line-through; }
+
+/* ============ 8. 진행 순서·FAQ·CTA ============ */
+.steps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; gap: 16px; }
+.steps li { padding: 20px; border-left: 2px solid var(--border); }
+.steps li span { font: 600 13px var(--mono); color: var(--accent); }
+.steps h3 { margin: 6px 0; font-size: 18px; }
+.steps p { color: var(--muted); font-size: 15px; }
+details { border-bottom: 1px solid var(--border); padding: 18px 0; }
+details:first-of-type { margin-top: 32px; border-top: 1px solid var(--border); }
+summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+summary::after { content: "+"; color: var(--muted); }
+details[open] summary::after { content: "–"; }
+details p { color: var(--muted); margin-top: 12px; font-size: 15px; }
+
+.cta { text-align: center; }
+.cta .sub { margin-inline: auto; }
+.form { display: flex; flex-direction: column; gap: 10px; max-width: 480px; margin: 0 auto; }
+.form input { padding: 13px 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font: 16px var(--font); }
+.form input[aria-invalid="true"] { border-color: #f87171; }
+.form__msg { margin-top: 14px; min-height: 24px; font-size: 14px; color: var(--muted); }
+.form__msg.is-ok { color: var(--ok); }
+.form__msg.is-err { color: #f87171; }
+
+.footer { border-top: 1px solid var(--border); padding: 40px 0; }
+.footer__inner { display: grid; gap: 20px; }
+
+/* ============ 9. 반응형 (모바일 우선 → 넓은 화면) ============ */
+@media (min-width: 720px) {
+  .nav__links { display: flex; }
+  .hide-sm { display: inline; }
+  .mock__body { grid-template-columns: 1fr 1fr; padding: 28px; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .steps { grid-template-columns: repeat(4, 1fr); }
+  .form { flex-direction: row; }
+  .form input { flex: 1; }
+  .footer__inner { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+@media (min-width: 1000px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+  .card--wide { grid-column: span 2; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
